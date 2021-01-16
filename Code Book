@@ -1,0 +1,18 @@
+This file contains the codebook of the data to indicate all the variables and summaries calculated, along with units, and any other relevant information. 
+The R script run_analysis.R prepares the raw data for future analysis, the preparation follows 5 steps as described in the course project instructions.
+
+Before the start: Dataset is downloaded, unzipped and read, and the dplyr package is activated. 
+Then, every useful text file was read and assigned to a variable. e.g. activitylabels <- read.table("UCI HAR Dataset/activity_labels.txt")
+Followed by 5 steps:
+  Merges the training and the test sets to create one data set. 
+          The datasets corresponding to test and train is merged for each variable X, Y and subject. 
+          e.g. X <- rbind(xtrain, xtest); merged <- cbind(subject, X, Y)
+  Extracts only the measurements on the mean and standard deviation for each measurement. 
+          The measurements on mean and std subsets in the "extracted" variable only of the columns "subject" and "code".
+  Uses descriptive activity names to name the activities in the data set.
+          The code from the activity dataset is taken to name the activities in the extracted dataset.
+  Appropriately labels the data set with descriptive variable names.
+          The code column was replaced by the activities column and the descriptive variable names were renamed with an explicit name.
+  From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+          The extracted variable is grouped by subject and activity, then summarised by taking the mean of each variable, activity and subject and assgined to tidydata.
+          A table of the tidydata is exported as a text file: "tidydata.txt"
